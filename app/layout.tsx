@@ -6,6 +6,8 @@ const description =
   "A Go deploy tool for one VPS. It builds an exact commit with Docker, proves it healthy, switches Caddy over and rolls back on its own.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sling-tawny.vercel.app"),
+  alternates: { canonical: "/" },
   title,
   description,
   icons: { icon: { url: "/favicon.svg", type: "image/svg+xml" } },
@@ -13,9 +15,10 @@ export const metadata: Metadata = {
     type: "website",
     title,
     description: "Builds an exact commit, proves it healthy, switches Caddy over and rolls back on its own.",
+    url: "/",
+    images: [{ url: "/share.jpg", width: 1200, height: 630, alt: "Sling: zero-downtime deploys for one VPS" }],
   },
   twitter: { card: "summary_large_image" },
-  // canonical: added once the site has its own domain
 };
 
 export const viewport: Viewport = {
@@ -84,8 +87,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <meta name="site-kind" content="software" />
         <meta name="page-type" content="software" />
-        {/* the hero's own tile from shoot.mjs; relative until the site has its domain */}
-        <meta property="og:image" content="share.jpg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
