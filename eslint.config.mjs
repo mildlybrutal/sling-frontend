@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The design kit and its checks are plain JS copied from taste-skill.
+    "public/assets/**",
+    ".taste-skill/**",
   ]),
 ]);
 

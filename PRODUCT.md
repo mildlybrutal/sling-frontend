@@ -30,9 +30,11 @@ Sling is strictly Git-driven: a commit initiates the release workflow. The inter
 - Streams build and deployment logs for inspection.
 - Visualizes deployment state and runtime boundaries; it is not a configuration editor.
 - Uses precise orchestration terminology: Active Container, Standby Container, Zero-Downtime Cutover, Health Probe, Ephemeral Port Binding, and Automated Rollback.
-- The frontend is a Next.js single-page application using Tailwind CSS and Framer Motion.
-- Icons must be inline SVGs; do not add external icon libraries such as Lucide or FontAwesome.
-- Visual treatments must not use gradients. The interface should use deep greying blacks, high-contrast white text, and subtle monochrome glows.
+- The frontend is a Next.js single page, exported as static files (`output: "export"`), built on the taste-skill design kit in `public/assets` (plain CSS and JS, loaded after hydration by `app/kit-loader.tsx`). Page CSS lives in `public/page.css`.
+- Palette: charcoal ground (`#1d1e21`), sand text and inverse ground (`#ece4d3`, lit ground `#e6dcc8`), electric blue (`#2f6bff`) for buttons, links, focus and small marks. No violet.
+- Type: Reddit Sans for text and headings, JetBrains Mono for code and terminal output.
+- Effects: one shader ground (`grain-gradient`) behind the hero window; two scroll moments (`letters-assemble`, `line-carries-colour`). Card panels and the footer use the lit sand ground.
+- Tool logos are the real marks (Git, GitHub, Docker, Caddy, Let's Encrypt, SQLite, Go), fetched once by `icons.mjs` into `public/assets/icons`; interface glyphs are inline SVGs. No icon library or CDN at runtime.
 
 ## Brand Commitments
 
@@ -40,7 +42,7 @@ Sling should feel industrial, heavy, terminal-inspired, and premium. Its strengt
 
 ## Evidence on Hand
 
-The current frontend contains a single landing surface in `app/page.tsx` describing zero-downtime cutovers, automated rollbacks, Git-driven automation, and ephemeral port binding. It includes inline SVG icons, Tailwind utility styling, and Framer Motion transitions. No production deployment data, customer proof, testimonials, or case studies are present; future work must not fabricate them.
+The landing page (`app/page.tsx`, sections in `app/components/`) shows Sling's real CLI output, its `sling history` statuses, the webhook's HMAC check from `internal/webhook/handler.go`, and the README's comparison table. Every number on it comes from the orchestrator's README or code. No production deployment data, customer proof, testimonials, or case studies are present; future work must not fabricate them.
 
 ## Product Principles
 
